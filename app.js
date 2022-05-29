@@ -169,7 +169,7 @@ function createGridCells() {
 function createRandomCellBox() {
     if ( !getAllCells().filter(cell=>!cell.innerHTML).length ) {
         alert( "YOU LOSE !")
-        return
+        return resetGame()
     }   
 
     const x = Math.floor(Math.random() * 4)
