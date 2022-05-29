@@ -65,6 +65,15 @@ function initGame() {
     createKeypress()
 }
 
+function resetGame() {
+    const removeBoxes = [...document.querySelectorAll('.cell-box')];
+
+    removeBoxes.forEach(box => box.remove());
+
+    createRandomCellBox()
+    createRandomCellBox()
+}
+
 function createKeypress() {
     const movement = {
         'ArrowUp': moveUp,
