@@ -52,11 +52,18 @@ const colors = {
     },
 }
 
+const gameTable = document.querySelector('.grid');
+const gameOver = document.querySelector('.loser');
+
 initGame()
 
 /////////// GRID ////////////
 
 function initGame() {
+
+    gameTable.style.display = 'grid';
+    gameOver.style.display = 'none';
+
     createGridCells()
 
     createRandomCellBox()
@@ -65,7 +72,23 @@ function initGame() {
     createKeypress()
 }
 
+
+
 function resetGame() {
+    gameTable.style.display = 'none';
+    gameOver.style.display = 'flex';
+
+    restartGame()
+}
+
+document.getElementById("restart-game").addEventListener("click", function() {
+    gameTable.style.display = 'grid';
+    gameOver.style.display = 'none';
+
+    restartGame()
+});
+
+function restartGame() {
     const removeBoxes = [...document.querySelectorAll('.cell-box')];
 
     removeBoxes.forEach(box => box.remove());
@@ -168,7 +191,6 @@ function createGridCells() {
 
 function createRandomCellBox() {
     if ( !getAllCells().filter(cell=>!cell.innerHTML).length ) {
-        alert( "YOU LOSE !")
         return resetGame()
     }   
 
